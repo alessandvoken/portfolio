@@ -1,7 +1,12 @@
 export default function Home() {
   return (
-    <main>
-      <div>Hello world!</div>
-    </main>
+    <div>
+      <header>
+        <h1>Alessandro Perchiazzi</h1>
+        <p>Frontend developer</p>
+        <p>I build interfaces for the moment things go wrong</p>
+      </header>
+      <main></main>
+    </div>
   );
 }
