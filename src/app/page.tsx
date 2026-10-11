@@ -18,6 +18,17 @@ export default function Home() {
             </li>
           </ul>
         </nav>
+        <ul>
+          <li>
+            <a href="https://github.com/alessandvoken">GitHub</a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/alessandro-perchiazzi">LinkedIn</a>
+          </li>
+          <li>
+            <a href="mailto:alessandro.perchiazzi598@gmail.com">Email</a>
+          </li>
+        </ul>
       </header>
       <main></main>
     </div>
