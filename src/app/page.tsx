@@ -49,18 +49,40 @@ export default function Home() {
             </IconLink>
           </li>
           <li>
-            <IconLink href="https://www.linkedin.com/in/alessandro-perchiazzi" label="LinkedIn">
+            <IconLink
+              href="https://www.linkedin.com/in/alessandro-perchiazzi"
+              label="LinkedIn"
+            >
               <LinkedInIcon />
             </IconLink>
           </li>
           <li>
-            <IconLink href="mailto:alessandro.perchiazzi598@gmail.com" label="Email">
+            <IconLink
+              href="mailto:alessandro.perchiazzi598@gmail.com"
+              label="Email"
+            >
               <MailIcon />
             </IconLink>
           </li>
         </ul>
       </header>
-      <main className="lg:py-24"></main>
+      <main className="lg:py-24">
+        <section id="about" className="mb-24 space-y-4">
+          <h2 className="text-xl font-semibold lg:sr-only">About</h2>
+          <p className="text-muted text-pretty">
+            ABOUT: Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            Dolores fuga quos porro quaerat, nobis id nesciunt ut cum odit
+            accusamus accusantium iure illum ducimus inventore possimus quas!
+            Beatae, exercitationem quasi.
+          </p>
+        </section>
+        <section id="projects" className="mb-24 space-y-4">
+          <h2 className="text-xl font-semibold lg:sr-only">Projects</h2>
+        </section>
+        <section id="experience" className="mb-24 space-y-4">
+          <h2 className="text-xl font-semibold lg:sr-only">Experience</h2>
+        </section>
+      </main>
     </div>
   );
 }
