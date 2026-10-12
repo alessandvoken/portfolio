@@ -52,6 +52,8 @@
   --animate-from-right: from-right 600ms ease-out both;
   --animate-from-top: from-top 600ms ease-out both;
   --animate-nav-in: nav-in 200ms ease-out var(--enter-delay, 0ms) both;
+  --animate-fade-narrow: fade-narrow 300ms ease-out both;
+  --animate-fade-wide: fade-wide 300ms ease-out both;
 
   @keyframes from-right {
     from {
@@ -71,6 +73,18 @@
     from {
       opacity: 0;
       transform: translateY(-8px);
+    }
+  }
+
+  @keyframes fade-narrow {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fade-wide {
+    from {
+      opacity: 0;
     }
   }
 }

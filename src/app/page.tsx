@@ -10,7 +10,7 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-24 py-12 md:py-20 grid gap-16 lg:grid-cols-2 lg:py-0 overflow-x-clip">
+    <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-24 py-12 md:py-20 grid gap-16 lg:grid-cols-2 lg:py-0 overflow-x-clip motion-safe:animate-fade-narrow motion-safe:lg:animate-fade-wide">
       <header className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:justify-between lg:py-24 motion-safe:animate-from-top">
         <div>
           <h1 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-balance">
@@ -20,7 +20,10 @@ export default function Home() {
           <p className="mt-4 max-w-xs text-muted text-pretty">
             I build interfaces for the moment things go wrong
           </p>
-          <nav aria-label="Sections" className="mt-16 hidden lg:block">
+          <nav
+            aria-label="Sections"
+            className="mt-16 hidden lg:block motion-safe:transition-opacity motion-safe:duration-300 motion-safe:starting:opacity-0"
+          >
             <ul>
               <li className="motion-safe:animate-nav-in [--enter-delay:600ms]">
                 <a
