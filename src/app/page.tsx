@@ -10,8 +10,8 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-24 py-12 md:py-20 grid gap-16 lg:grid-cols-2 lg:py-0">
-      <header className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:justify-between lg:py-24">
+    <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-24 py-12 md:py-20 grid gap-16 lg:grid-cols-2 lg:py-0 overflow-x-clip">
+      <header className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:justify-between lg:py-24 motion-safe:animate-from-top">
         <div>
           <h1 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-balance">
             Alessandro Perchiazzi
@@ -22,7 +22,7 @@ export default function Home() {
           </p>
           <nav aria-label="Sections" className="mt-16 hidden lg:block">
             <ul>
-              <li>
+              <li className="motion-safe:animate-nav-in [--enter-delay:600ms]">
                 <a
                   href="#about"
                   className="inline-block py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted hover:text-strong"
@@ -30,7 +30,7 @@ export default function Home() {
                   About
                 </a>
               </li>
-              <li>
+              <li className="motion-safe:animate-nav-in [--enter-delay:750ms]">
                 <a
                   href="#projects"
                   className="inline-block py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted hover:text-strong"
@@ -38,7 +38,7 @@ export default function Home() {
                   Projects
                 </a>
               </li>
-              <li>
+              <li className="motion-safe:animate-nav-in [--enter-delay:900ms]">
                 <a
                   href="#experience"
                   className="inline-block py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted hover:text-strong"
@@ -73,8 +73,11 @@ export default function Home() {
           </li>
         </ul>
       </header>
-      <main className="lg:py-24">
-        <section id="about" className="mb-24 space-y-4">
+      <main className="lg:py-24 motion-safe:animate-from-right">
+        <section
+          id="about"
+          className="mb-24 space-y-4 motion-safe:enter-on-scroll"
+        >
           <h2 className="text-xl font-semibold lg:sr-only">About</h2>
           <p className="text-muted text-pretty">
             ABOUT: Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -89,7 +92,7 @@ export default function Home() {
             {projects.map((project) => (
               <li
                 key={project.title}
-                className="group relative -mx-4 rounded-lg p-4 transition-colors hover:bg-surface"
+                className="group relative -mx-4 rounded-lg p-4 transition-colors hover:bg-surface motion-safe:enter-on-scroll"
               >
                 <h3 className="font-semibold">
                   <a
@@ -129,7 +132,10 @@ export default function Home() {
             ))}
           </ul>
         </section>
-        <section id="experience" className="mb-24 space-y-4">
+        <section
+          id="experience"
+          className="mb-24 space-y-4 motion-safe:enter-on-scroll"
+        >
           <h2 className="text-xl font-semibold lg:sr-only">Experience</h2>
         </section>
       </main>

@@ -2,34 +2,34 @@
 
 :root {
   color-scheme: light;
-  --bg: #F4F5F2;
-  --surface: #E2E6DF;
-  --strong: #1A1E1B;
-  --muted: #535B55;
-  --accent: #2D5E4C;
-  --border: #D6DBD3;
+  --bg: #f4f5f2;
+  --surface: #e2e6df;
+  --strong: #1a1e1b;
+  --muted: #535b55;
+  --accent: #2d5e4c;
+  --border: #d6dbd3;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
     color-scheme: dark;
-    --bg: #1A2023;
+    --bg: #1a2023;
     --surface: #283036;
-    --strong: #E3E8EA;
-    --muted: #A0AAB1;
-    --accent: #8FC4AC;
-    --border: #2F383E;
+    --strong: #e3e8ea;
+    --muted: #a0aab1;
+    --accent: #8fc4ac;
+    --border: #2f383e;
   }
 }
 
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --bg: #1A2023;
+  --bg: #1a2023;
   --surface: #283036;
-  --strong: #E3E8EA;
-  --muted: #A0AAB1;
-  --accent: #8FC4AC;
-  --border: #2F383E;
+  --strong: #e3e8ea;
+  --muted: #a0aab1;
+  --accent: #8fc4ac;
+  --border: #2f383e;
 }
 
 @theme inline {
@@ -45,5 +45,40 @@
   :focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
+  }
+}
+
+@theme inline {
+  --animate-from-right: from-right 600ms ease-out both;
+  --animate-from-top: from-top 600ms ease-out both;
+  --animate-nav-in: nav-in 200ms ease-out var(--enter-delay, 0ms) both;
+
+  @keyframes from-right {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+  }
+
+  @keyframes from-top {
+    from {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+  }
+
+  @keyframes nav-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
+}
+
+@utility enter-on-scroll {
+  @supports (animation-timeline: view()) {
+    animation: from-right linear both;
+    animation-timeline: view();
+    animation-range: cover 0% cover 25%;
   }
 }
