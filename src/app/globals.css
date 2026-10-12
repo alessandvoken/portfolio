@@ -3,7 +3,7 @@
 :root {
   color-scheme: light;
   --bg: #F4F5F2;
-  --surface: #E9ECE6;
+  --surface: #E2E6DF;
   --strong: #1A1E1B;
   --muted: #535B55;
   --accent: #2D5E4C;
@@ -14,7 +14,7 @@
   :root:not([data-theme='light']) {
     color-scheme: dark;
     --bg: #1A2023;
-    --surface: #232A2F;
+    --surface: #283036;
     --strong: #E3E8EA;
     --muted: #A0AAB1;
     --accent: #8FC4AC;
@@ -25,7 +25,7 @@
 :root[data-theme='dark'] {
   color-scheme: dark;
   --bg: #1A2023;
-  --surface: #232A2F;
+  --surface: #283036;
   --strong: #E3E8EA;
   --muted: #A0AAB1;
   --accent: #8FC4AC;

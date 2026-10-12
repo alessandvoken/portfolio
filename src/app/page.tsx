@@ -1,9 +1,16 @@
 import { IconLink } from '@/components/icon-link';
-import { GitHubIcon, LinkedInIcon, MailIcon } from '@/components/icons';
+import {
+  ArrowUpRightIcon,
+  GitHubIcon,
+  LinkedInIcon,
+  MailIcon,
+} from '@/components/icons';
+import { projects } from '@/data/projects';
+import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-24 py-12 md:py-20 lg:grid lg:grid-cols-2 lg:gap-16 lg:py-0">
+    <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-24 py-12 md:py-20 grid gap-16 lg:grid-cols-2 lg:py-0">
       <header className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:justify-between lg:py-24">
         <div>
           <h1 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-balance">
@@ -78,6 +85,49 @@ export default function Home() {
         </section>
         <section id="projects" className="mb-24 space-y-4">
           <h2 className="text-xl font-semibold lg:sr-only">Projects</h2>
+          <ul>
+            {projects.map((project) => (
+              <li
+                key={project.title}
+                className="group relative -mx-4 rounded-lg p-4 transition-colors hover:bg-surface"
+              >
+                <h3 className="font-semibold">
+                  <a
+                    className="inline-flex items-center gap-1 transition-colors group-hover:text-accent after:absolute after:inset-0 after:rounded-lg focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-accent"
+                    href={project.liveUrl}
+                  >
+                    {project.title}
+                    <span className="inline-block motion-safe:transition-transform motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:translate-x-0.5">
+                      <ArrowUpRightIcon />
+                    </span>
+                  </a>
+                </h3>
+                <Image
+                  src={project.screenshot}
+                  alt=""
+                  unoptimized
+                  loading="eager"
+                  className="mt-3 h-auto w-full rounded-md border border-border"
+                />
+                <p className="mt-4 text-muted text-pretty transition-colors group-hover:text-strong">
+                  {project.description}
+                </p>
+                <p className="mt-2 font-medium text-muted tabular-nums transition-colors group-hover:text-strong">
+                  {project.metric}
+                </p>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {project.stack.map((tag) => (
+                    <li
+                      key={tag}
+                      className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium leading-5 text-accent"
+                    >
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
         </section>
         <section id="experience" className="mb-24 space-y-4">
           <h2 className="text-xl font-semibold lg:sr-only">Experience</h2>
