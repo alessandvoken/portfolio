@@ -8,10 +8,11 @@ import {
 import { projects } from '@/data/projects';
 import Image from 'next/image';
 import inLimboImg from '@/assets/in-limbo-preview.webp';
+import { ExperienceTimeline } from '@/components/experience-timeline';
 
 export default function Home() {
   return (
-    <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-24 py-12 md:py-20 grid gap-16 lg:grid-cols-2 lg:py-0 overflow-x-clip motion-safe:animate-fade-narrow motion-safe:lg:animate-fade-wide">
+    <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-12 md:py-20 grid gap-16 lg:gap-12 lg:grid-cols-2 lg:py-0 overflow-x-clip motion-safe:animate-fade-narrow motion-safe:lg:animate-fade-wide">
       <header className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:justify-between lg:py-24 motion-safe:animate-from-top">
         <div>
           <h1 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-balance">
@@ -34,20 +35,21 @@ export default function Home() {
                   About
                 </a>
               </li>
+
               <li className="motion-safe:animate-nav-in [--enter-delay:750ms]">
-                <a
-                  href="#projects"
-                  className="inline-block py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted hover:text-strong"
-                >
-                  Projects
-                </a>
-              </li>
-              <li className="motion-safe:animate-nav-in [--enter-delay:900ms]">
                 <a
                   href="#experience"
                   className="inline-block py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted hover:text-strong"
                 >
                   Experience
+                </a>
+              </li>
+              <li className="motion-safe:animate-nav-in [--enter-delay:900ms]">
+                <a
+                  href="#projects"
+                  className="inline-block py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted hover:text-strong"
+                >
+                  Projects
                 </a>
               </li>
             </ul>
@@ -80,18 +82,18 @@ export default function Home() {
       <main className="lg:py-24 motion-safe:animate-from-right">
         <section
           id="about"
-          className="mb-24 space-y-4 motion-safe:enter-on-scroll"
+          className="mb-24 space-y-4 motion-safe:enter-on-scroll lg:scroll-mt-24"
         >
           <h2 className="text-xl font-semibold lg:sr-only">About</h2>
-          <p className="text-justify text-muted text-pretty">
-            Hi! I'm Alessandro, a frontend engineer currently working at IBM who
+          <p className="text-muted text-pretty">
+            Hi! I’m Alessandro, a frontend engineer currently working at IBM who
             enjoys the intersection of design, product thinking, and
-            engineering. I like shaping how a product looks and works, thinking
-            through its architecture, and choosing the right stack for the job.
-            I care about writing clean, well-structured code that's technically
-            sound and maintainable.
+            engineering. I like shaping how a product looks and works,
+            collaborating with others on architectural decisions, and choosing
+            the right stack for the job. I care about writing clean,
+            well-structured code that’s technically sound and maintainable.
           </p>
-          <p className="text-justify text-muted text-pretty">
+          <p className="text-muted text-pretty">
             Before getting into code, I worked as a documentary photographer.
             Feel free to take a look at{' '}
             <a
@@ -110,11 +112,19 @@ export default function Home() {
             </a>
             .
           </p>
-          <p className=" text-justify text-muted text-pretty">
-            When offline, I'm usually at the gym, working on my calisthenics.
+          <p className="text-muted text-pretty">
+            When offline, I’m usually at the gym, working on my calisthenics.
           </p>
         </section>
-        <section id="projects" className="mb-24 space-y-4">
+        <section
+          id="experience"
+          className="mb-24 space-y-4 motion-safe:enter-on-scroll lg:scroll-mt-24"
+        >
+          <h2 className="text-xl font-semibold lg:sr-only">Experience</h2>
+
+          <ExperienceTimeline />
+        </section>
+        <section id="projects" className="mb-24 space-y-4 lg:scroll-mt-24">
           <h2 className="text-xl font-semibold lg:sr-only">Projects</h2>
           <ul>
             {projects.map((project) => (
@@ -140,7 +150,7 @@ export default function Home() {
                   loading="eager"
                   className="mt-3 h-auto w-full rounded-md border border-border"
                 />
-                <p className="text-justify mt-4 text-muted text-pretty transition-colors group-hover:text-strong">
+                <p className="mt-4 text-muted text-pretty transition-colors group-hover:text-strong">
                   {project.description}
                 </p>
                 <p className="mt-2 font-medium text-muted tabular-nums transition-colors group-hover:text-strong">
@@ -159,12 +169,6 @@ export default function Home() {
               </li>
             ))}
           </ul>
-        </section>
-        <section
-          id="experience"
-          className="mb-24 space-y-4 motion-safe:enter-on-scroll"
-        >
-          <h2 className="text-xl font-semibold lg:sr-only">Experience</h2>
         </section>
       </main>
     </div>

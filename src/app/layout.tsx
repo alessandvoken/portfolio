@@ -11,7 +11,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en" className={albertSans.className}>
+    <html
+      lang="en"
+      className={`${albertSans.className} motion-safe:scroll-smooth`}
+    >
       <body className="bg-bg text-strong">{children}</body>
     </html>
   );
