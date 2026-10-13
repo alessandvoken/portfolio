@@ -7,6 +7,7 @@ import {
 } from '@/components/icons';
 import { projects } from '@/data/projects';
 import Image from 'next/image';
+import inLimboImg from '@/assets/in-limbo-preview.webp';
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
           </h1>
           <p className="mt-2 text-xl font-medium">Frontend developer</p>
           <p className="mt-4 max-w-xs text-muted text-pretty">
-            I build interfaces for the moment things go wrong
+            I build functional, accessible web interfaces.
           </p>
           <nav
             aria-label="Sections"
@@ -82,11 +83,35 @@ export default function Home() {
           className="mb-24 space-y-4 motion-safe:enter-on-scroll"
         >
           <h2 className="text-xl font-semibold lg:sr-only">About</h2>
-          <p className="text-muted text-pretty">
-            ABOUT: Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Dolores fuga quos porro quaerat, nobis id nesciunt ut cum odit
-            accusamus accusantium iure illum ducimus inventore possimus quas!
-            Beatae, exercitationem quasi.
+          <p className="text-justify text-muted text-pretty">
+            Hi! I'm Alessandro, a frontend engineer currently working at IBM who
+            enjoys the intersection of design, product thinking, and
+            engineering. I like shaping how a product looks and works, thinking
+            through its architecture, and choosing the right stack for the job.
+            I care about writing clean, well-structured code that's technically
+            sound and maintainable.
+          </p>
+          <p className="text-justify text-muted text-pretty">
+            Before getting into code, I worked as a documentary photographer.
+            Feel free to take a look at{' '}
+            <a
+              href="https://eurasianet.org/in-limbo-for-a-generation-photos-of-azerbaijans-displaced"
+              className="group/preview relative text-strong underline decoration-muted underline-offset-3 transition-colors hover:text-accent hover:decoration-accent
+"
+            >
+              one of my projects
+              <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 opacity-0 group-hover/preview:opacity-100 group-focus-visible/preview:opacity-100 mb-2 w-64 motion-safe:transition-opacity">
+                <Image
+                  src={inLimboImg}
+                  alt=""
+                  className="h-auto w-full rounded-md border border-border shadow-lg"
+                />
+              </span>
+            </a>
+            .
+          </p>
+          <p className=" text-justify text-muted text-pretty">
+            When offline, I'm usually at the gym, working on my calisthenics.
           </p>
         </section>
         <section id="projects" className="mb-24 space-y-4">
@@ -115,13 +140,13 @@ export default function Home() {
                   loading="eager"
                   className="mt-3 h-auto w-full rounded-md border border-border"
                 />
-                <p className="mt-4 text-muted text-pretty transition-colors group-hover:text-strong">
+                <p className="text-justify mt-4 text-muted text-pretty transition-colors group-hover:text-strong">
                   {project.description}
                 </p>
                 <p className="mt-2 font-medium text-muted tabular-nums transition-colors group-hover:text-strong">
                   {project.metric}
                 </p>
-                <ul className="mt-3 flex flex-wrap gap-2">
+                <ul className=" mt-3 flex flex-wrap gap-2">
                   {project.stack.map((tag) => (
                     <li
                       key={tag}
