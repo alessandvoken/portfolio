@@ -142,7 +142,7 @@ export default function Home() {
             {projects.map((project) => (
               <li
                 key={project.title}
-                className="group relative -mx-4 rounded-lg p-4 transition-colors hover:bg-surface motion-safe:enter-on-scroll"
+                className="group relative -mx-4 rounded-lg bg-surface p-4 inset-ring inset-ring-transparent transition-shadow hover:inset-ring-accent/45 motion-safe:enter-on-scroll"
               >
                 <h3 className="font-semibold">
                   <a
