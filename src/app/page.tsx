@@ -18,7 +18,7 @@ export default function Home() {
           <h1 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-balance">
             Alessandro Perchiazzi
           </h1>
-          <p className="mt-2 text-xl font-medium">Frontend developer</p>
+          <p className="mt-2 text-xl font-medium">Frontend engineer</p>
           <p className="mt-4 max-w-xs text-muted text-pretty">
             I build functional, accessible web interfaces.
           </p>
@@ -30,7 +30,7 @@ export default function Home() {
               <li className="motion-safe:animate-nav-in [--enter-delay:600ms]">
                 <a
                   href="#about"
-                  className="inline-block py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted hover:text-strong"
+                  className="inline-block py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted hover:text-strong hover:underline decoration-accent decoration-2 underline-offset-4"
                 >
                   About
                 </a>
@@ -39,7 +39,7 @@ export default function Home() {
               <li className="motion-safe:animate-nav-in [--enter-delay:750ms]">
                 <a
                   href="#experience"
-                  className="inline-block py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted hover:text-strong"
+                  className="inline-block py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted hover:text-strong hover:underline decoration-accent decoration-2 underline-offset-4"
                 >
                   Experience
                 </a>
@@ -47,7 +47,7 @@ export default function Home() {
               <li className="motion-safe:animate-nav-in [--enter-delay:900ms]">
                 <a
                   href="#projects"
-                  className="inline-block py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted hover:text-strong"
+                  className="inline-block py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted hover:text-strong hover:underline decoration-accent decoration-2 underline-offset-4"
                 >
                   Projects
                 </a>

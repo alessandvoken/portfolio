@@ -7,6 +7,7 @@ const albertSans = Albert_Sans({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Alessandro Perchiazzi',
   description: 'Portfolio',
+  metadataBase: new URL('https://www.alessandroperchiazzi.com'),
 };
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
