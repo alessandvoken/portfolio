@@ -94,8 +94,8 @@ export default function Home() {
             well-structured code that’s technically sound and maintainable.
           </p>
           <p className="text-muted text-pretty">
-            Before getting into code, I worked as a documentary photographer.
-            Feel free to take a look at{' '}
+            Before moving into software development, I worked as a documentary
+            photographer. Feel free to take a look at{' '}
             <a
               href="https://eurasianet.org/in-limbo-for-a-generation-photos-of-azerbaijans-displaced"
               className="group/preview relative text-strong underline decoration-muted underline-offset-3 transition-colors hover:text-accent hover:decoration-accent
