@@ -146,7 +146,6 @@ export default function Home() {
                 <Image
                   src={project.screenshot}
                   alt=""
-                  unoptimized
                   loading="eager"
                   className="mt-3 h-auto w-full rounded-md border border-border"
                 />
