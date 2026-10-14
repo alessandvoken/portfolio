@@ -123,6 +123,18 @@ export default function Home() {
           <h2 className="text-xl font-semibold lg:sr-only">Experience</h2>
 
           <ExperienceTimeline />
+
+          <a
+            href="/Alessandro_Perchiazzi_Frontend_Engineer_CV.pdf"
+            target="_blank"
+            className="group/cv mt-12 inline-flex items-center gap-1 font-semibold transition-colors hover:text-accent"
+          >
+            View Full Résumé
+            <span className="sr-only"> (PDF, opens in a new tab)</span>
+            <span className="inline-block motion-safe:transition-transform motion-safe:group-hover/cv:-translate-y-0.5 motion-safe:group-hover/cv:translate-x-0.5">
+              <ArrowUpRightIcon />
+            </span>
+          </a>
         </section>
         <section id="projects" className="mb-24 space-y-4 lg:scroll-mt-24">
           <h2 className="text-xl font-semibold lg:sr-only">Projects</h2>
