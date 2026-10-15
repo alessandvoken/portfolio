@@ -138,35 +138,48 @@ export default function Home() {
         </section>
         <section id="projects" className="mb-24 space-y-4 lg:scroll-mt-24">
           <h2 className="text-xl font-semibold lg:sr-only">Projects</h2>
-          <ul>
+          <ul className="space-y-12">
             {projects.map((project) => (
               <li
                 key={project.title}
-                className="group relative rounded-lg bg-surface p-4 inset-ring inset-ring-transparent transition-shadow hover:inset-ring-accent/45 motion-safe:enter-on-scroll"
+                className={`rounded-lg bg-surface p-4 motion-safe:enter-on-scroll ${project.status === 'live' ? 'group relative inset-ring inset-ring-transparent transition-shadow hover:inset-ring-accent/45' : ''}`}
               >
-                <h3 className="font-semibold">
-                  <a
-                    className="inline-flex items-center gap-1 transition-colors group-hover:text-accent after:absolute after:inset-0 after:rounded-lg focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-accent"
-                    href={project.liveUrl}
-                  >
-                    {project.title}
-                    <span className="inline-block motion-safe:transition-transform motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:translate-x-0.5">
-                      <ArrowUpRightIcon />
-                    </span>
-                  </a>
+                <h3 className="flex flex-wrap items-center gap-x-3 gap-y-1 font-semibold">
+                  {project.status === 'live' ? (
+                    <a
+                      className="inline-flex items-center gap-1 transition-colors group-hover:text-accent after:absolute after:inset-0 after:rounded-lg focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-accent"
+                      href={project.liveUrl}
+                    >
+                      {project.title}
+                      <span className="inline-block motion-safe:transition-transform motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:translate-x-0.5">
+                        <ArrowUpRightIcon />
+                      </span>
+                    </a>
+                  ) : (
+                    <>
+                      {project.title}
+                      <span className="rounded-full border border-border px-2.5 py-0.5 text-xs font-medium text-muted">
+                        In progress
+                      </span>
+                    </>
+                  )}
                 </h3>
-                <Image
-                  src={project.screenshot}
-                  alt=""
-                  loading="eager"
-                  className="mt-3 h-auto w-full rounded-md border border-border"
-                />
+                {project.status === 'live' && (
+                  <Image
+                    src={project.screenshot}
+                    alt=""
+                    loading="eager"
+                    className="mt-3 h-auto w-full rounded-md border border-border"
+                  />
+                )}
                 <p className="mt-4 text-muted text-pretty transition-colors group-hover:text-strong">
                   {project.description}
                 </p>
-                <p className="mt-2 font-medium text-muted tabular-nums transition-colors group-hover:text-strong">
-                  {project.metric}
-                </p>
+                {project.status === 'live' && (
+                  <p className="mt-2 font-medium text-muted tabular-nums transition-colors group-hover:text-strong">
+                    {project.metric}
+                  </p>
+                )}
                 <ul className=" mt-3 flex flex-wrap gap-2">
                   {project.stack.map((tag) => (
                     <li

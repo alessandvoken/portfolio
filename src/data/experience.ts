@@ -36,7 +36,7 @@ export const jobs: Job[] = [
       {
         client: 'BPER Bank',
         description:
-          'Bug fixes, supported new features and tests, built on the bank’s design system in Storybook.',
+          'Bug fixes and support, plus new features and tests on the bank’s design system in Storybook.',
       },
     ],
   },
