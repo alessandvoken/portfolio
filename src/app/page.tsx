@@ -24,10 +24,10 @@ export default function Home() {
           </p>
           <nav
             aria-label="Sections"
-            className="mt-16 hidden lg:block motion-safe:transition-opacity motion-safe:duration-300 motion-safe:starting:opacity-0"
+            className="mt-50 hidden lg:block motion-safe:transition-opacity motion-safe:duration-300 motion-safe:starting:opacity-0"
           >
             <ul>
-              <li className="motion-safe:animate-nav-in [--enter-delay:600ms]">
+              <li className="motion-safe:animate-nav-in [--enter-delay:3900ms]">
                 <a
                   href="#about"
                   className="inline-block py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted hover:text-strong hover:underline decoration-accent decoration-2 underline-offset-4"
@@ -36,7 +36,7 @@ export default function Home() {
                 </a>
               </li>
 
-              <li className="motion-safe:animate-nav-in [--enter-delay:750ms]">
+              <li className="motion-safe:animate-nav-in [--enter-delay:4050ms]">
                 <a
                   href="#experience"
                   className="inline-block py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted hover:text-strong hover:underline decoration-accent decoration-2 underline-offset-4"
@@ -44,7 +44,7 @@ export default function Home() {
                   Experience
                 </a>
               </li>
-              <li className="motion-safe:animate-nav-in [--enter-delay:900ms]">
+              <li className="motion-safe:animate-nav-in [--enter-delay:4200ms]">
                 <a
                   href="#projects"
                   className="inline-block py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted hover:text-strong hover:underline decoration-accent decoration-2 underline-offset-4"
@@ -127,7 +127,7 @@ export default function Home() {
           <a
             href="/Alessandro_Perchiazzi_Frontend_Engineer_CV.pdf"
             target="_blank"
-            className="group/cv mt-12 inline-flex items-center gap-1 font-semibold transition-colors hover:text-accent"
+            className="group/cv mt-12 inline-flex items-center gap-1 font-semibold transition-colors hover:text-accent motion-safe:animate-nav-in [--enter-delay:3750ms]"
           >
             View Full Résumé
             <span className="sr-only"> (PDF, opens in a new tab)</span>
