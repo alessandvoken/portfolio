@@ -19,6 +19,7 @@ export function ExperienceTimeline() {
             style={{
               '--step': index,
               '--row': row,
+              '--next-step': index + 1,
               '--next-row': firstRows[index + 1],
             }}
             className={`relative grid grid-cols-[8rem_1fr] items-baseline gap-4 ps-6 pb-14 last:pb-0 before:absolute before:inset-s-1 before:top-3 before:h-full before:w-0.5 before:origin-top before:bg-accent last:before:hidden after:absolute after:inset-s-0 after:top-1.75 after:size-2.5 after:rounded-full motion-safe:before:animate-draw-down motion-safe:after:animate-dot-in ${
@@ -41,7 +42,7 @@ export function ExperienceTimeline() {
                 <>
                   <p
                     style={{ '--row': row + 1 }}
-                    className="mt-6 text-xs font-medium uppercase tracking-[0.08em] text-muted motion-safe:animate-job-in"
+                    className="mt-6 text-xs font-medium uppercase tracking-[0.08em] text-muted motion-safe:animate-client-in"
                   >
                     Clients
                   </p>
@@ -50,7 +51,7 @@ export function ExperienceTimeline() {
                       <li
                         key={project.client}
                         style={{ '--row': row + 2 + projectIndex }}
-                        className="motion-safe:animate-job-in"
+                        className="motion-safe:animate-client-in"
                       >
                         <h4 className="font-medium">{project.client}</h4>
                         <p className="mt-1.5 leading-relaxed text-muted text-pretty">
