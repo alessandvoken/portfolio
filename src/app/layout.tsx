@@ -6,7 +6,8 @@ const albertSans = Albert_Sans({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Alessandro Perchiazzi',
-  description: 'Portfolio',
+  description:
+    'Frontend engineer. I build functional, accessible web interfaces.',
   metadataBase: new URL('https://www.alessandroperchiazzi.com'),
 };
 
