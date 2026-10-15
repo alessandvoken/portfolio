@@ -49,8 +49,6 @@
 }
 
 @theme inline {
-  --animate-from-right: from-right 600ms ease-out both;
-  --animate-from-top: from-top 600ms ease-out both;
   --animate-nav-in: nav-in 200ms ease-out var(--enter-delay, 0ms) both;
   --animate-fade-narrow: fade-narrow 300ms ease-out both;
   --animate-fade-wide: fade-wide 300ms ease-out both;
@@ -63,20 +61,6 @@
   --animate-draw-down: draw-down 400ms ease-in-out
     calc(600ms + var(--next-step, 0) * 750ms + var(--next-row, 0) * 150ms - 400ms)
     both;
-
-  @keyframes from-right {
-    from {
-      opacity: 0;
-      transform: translateX(100px);
-    }
-  }
-
-  @keyframes from-top {
-    from {
-      opacity: 0;
-      transform: translateY(-40px);
-    }
-  }
 
   @keyframes nav-in {
     from {
@@ -114,13 +98,5 @@
       opacity: 0;
       transform: translateX(var(--from-dot, 0));
     }
-  }
-}
-
-@utility enter-on-scroll {
-  @supports (animation-timeline: view()) {
-    animation: from-right linear both;
-    animation-timeline: view();
-    animation-range: cover 0% cover 25%;
   }
 }

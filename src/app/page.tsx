@@ -9,53 +9,22 @@ import { projects } from '@/data/projects';
 import Image from 'next/image';
 import inLimboImg from '@/assets/in-limbo-preview.webp';
 import { ExperienceTimeline } from '@/components/experience-timeline';
+import { MobileSectionNav, SectionNav } from '@/components/section-nav';
 
 export default function Home() {
   return (
     <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-12 md:py-20 grid gap-16 lg:gap-12 lg:grid-cols-2 lg:py-0 overflow-x-clip motion-safe:animate-fade-narrow motion-safe:lg:animate-fade-wide">
-      <header className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:justify-between lg:py-24 motion-safe:animate-from-top">
+      <header className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:justify-between lg:py-24">
         <div>
-          <h1 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-balance">
+          <h1 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-balance motion-safe:animate-nav-in">
             Alessandro Perchiazzi
           </h1>
-          <p className="mt-2 text-xl font-medium">Frontend engineer</p>
-          <p className="mt-4 max-w-xs text-muted text-pretty">
-            I build functional, accessible web interfaces.
+          <p className="mt-2 text-xl font-medium motion-safe:animate-nav-in">
+            Frontend engineer
           </p>
-          <nav
-            aria-label="Sections"
-            className="mt-50 hidden lg:block motion-safe:transition-opacity motion-safe:duration-300 motion-safe:starting:opacity-0"
-          >
-            <ul>
-              <li className="motion-safe:animate-nav-in [--enter-delay:3900ms]">
-                <a
-                  href="#about"
-                  className="inline-block py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted hover:text-strong hover:underline decoration-accent decoration-2 underline-offset-4"
-                >
-                  About
-                </a>
-              </li>
-
-              <li className="motion-safe:animate-nav-in [--enter-delay:4050ms]">
-                <a
-                  href="#experience"
-                  className="inline-block py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted hover:text-strong hover:underline decoration-accent decoration-2 underline-offset-4"
-                >
-                  Experience
-                </a>
-              </li>
-              <li className="motion-safe:animate-nav-in [--enter-delay:4200ms]">
-                <a
-                  href="#projects"
-                  className="inline-block py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted hover:text-strong hover:underline decoration-accent decoration-2 underline-offset-4"
-                >
-                  Projects
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <SectionNav />
         </div>
-        <ul className="mt-8 flex items-center gap-4">
+        <ul className="mt-8 flex items-center gap-4 motion-safe:animate-nav-in">
           <li>
             <IconLink href="https://github.com/alessandvoken" label="GitHub">
               <GitHubIcon />
@@ -79,12 +48,13 @@ export default function Home() {
           </li>
         </ul>
       </header>
-      <main className="lg:py-24 motion-safe:animate-from-right">
+      <MobileSectionNav />
+      <main className="lg:py-24">
         <section
           id="about"
-          className="mb-24 space-y-4 motion-safe:enter-on-scroll lg:scroll-mt-24"
+          className="mb-24 scroll-mt-16 space-y-4 motion-safe:animate-nav-in lg:scroll-mt-24"
         >
-          <h2 className="text-xl font-semibold lg:sr-only">About</h2>
+          <h2 className="sr-only">About</h2>
           <p className="text-muted text-pretty">
             Hi! I’m Alessandro, a frontend engineer currently working at IBM who
             enjoys the intersection of design, product thinking, and
@@ -98,8 +68,7 @@ export default function Home() {
             photographer. Feel free to take a look at{' '}
             <a
               href="https://eurasianet.org/in-limbo-for-a-generation-photos-of-azerbaijans-displaced"
-              className="group/preview relative text-strong underline decoration-muted underline-offset-3 transition-colors hover:text-accent hover:decoration-accent
-"
+              className="group/preview relative text-strong underline decoration-muted underline-offset-3 transition-colors hover:text-accent hover:decoration-accent"
             >
               one of my projects
               <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 opacity-0 group-hover/preview:opacity-100 group-focus-visible/preview:opacity-100 mb-2 w-64 motion-safe:transition-opacity">
@@ -118,9 +87,9 @@ export default function Home() {
         </section>
         <section
           id="experience"
-          className="mb-24 space-y-4 motion-safe:enter-on-scroll lg:scroll-mt-24"
+          className="mb-24 scroll-mt-16 space-y-4 lg:scroll-mt-24"
         >
-          <h2 className="text-xl font-semibold lg:sr-only">Experience</h2>
+          <h2 className="sr-only">Experience</h2>
 
           <ExperienceTimeline />
 
@@ -136,13 +105,16 @@ export default function Home() {
             </span>
           </a>
         </section>
-        <section id="projects" className="mb-24 space-y-4 lg:scroll-mt-24">
-          <h2 className="text-xl font-semibold lg:sr-only">Projects</h2>
+        <section
+          id="projects"
+          className="mb-24 scroll-mt-16 space-y-4 lg:scroll-mt-24"
+        >
+          <h2 className="sr-only">Projects</h2>
           <ul className="space-y-12">
             {projects.map((project) => (
               <li
                 key={project.title}
-                className={`rounded-lg bg-surface p-4 motion-safe:enter-on-scroll ${project.status === 'live' ? 'group relative inset-ring inset-ring-transparent transition-shadow hover:inset-ring-accent/45' : ''}`}
+                className={`rounded-lg bg-surface p-4 ${project.status === 'live' ? 'group relative inset-ring inset-ring-transparent transition-shadow hover:inset-ring-accent/45' : ''}`}
               >
                 <h3 className="flex flex-wrap items-center gap-x-3 gap-y-1 font-semibold">
                   {project.status === 'live' ? (
@@ -180,7 +152,7 @@ export default function Home() {
                     {project.metric}
                   </p>
                 )}
-                <ul className=" mt-3 flex flex-wrap gap-2">
+                <ul className="mt-3 flex flex-wrap gap-2">
                   {project.stack.map((tag) => (
                     <li
                       key={tag}
