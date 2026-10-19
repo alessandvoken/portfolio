@@ -70,7 +70,7 @@ export function SectionNav() {
         {sections.map(({ id, label }, index) => (
           <li
             key={id}
-            style={{ '--enter-delay': `${3900 + index * 150}ms` }}
+            style={{ '--enter-delay': `${200 + index * 150}ms` }}
             className="motion-safe:animate-nav-in"
           >
             <a
