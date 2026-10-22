@@ -12,6 +12,7 @@ type InProgressProject = {
   title: string;
   description: string;
   stack: string[];
+  liveUrl?: string;
 };
 
 export type Project = LiveProject | InProgressProject;
@@ -34,16 +35,17 @@ export const projects: Project[] = [
   },
   {
     status: 'in-progress',
-    title: 'Incident status',
-    description:
-      'Runs an incident from the inside and tells users about it on a public status page. The team opens an incident, moves it through its phases and posts updates; the public page is served from cache, so it stays up when the product is down, and shows an update as soon as it is published.',
-    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Prisma', 'PostgreSQL'],
-  },
-  {
-    status: 'in-progress',
     title: 'Team planner',
     description:
       'A sprint board for planning and tracking work. Items move between states and can be reordered with the pointer or the keyboard. The focus is on what a rich client has to get right: a large backlog that stays smooth, and a board that stays consistent when several people edit simultaneously.',
     stack: ['React', 'TypeScript', 'HeroUI', 'React Aria', 'Tailwind CSS'],
+    liveUrl: 'https://team-planner-delta.vercel.app',
+  },
+  {
+    status: 'in-progress',
+    title: 'Incident status',
+    description:
+      'Runs an incident from the inside and tells users about it on a public status page. The team opens an incident, moves it through its phases and posts updates; the public page is served from cache, so it stays up when the product is down, and shows an update as soon as it is published.',
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Prisma', 'PostgreSQL'],
   },
 ];

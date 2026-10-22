@@ -114,10 +114,10 @@ export default function Home() {
             {projects.map((project) => (
               <li
                 key={project.title}
-                className={`rounded-lg bg-surface p-4 ${project.status === 'live' ? 'group relative inset-ring inset-ring-transparent transition-shadow hover:inset-ring-accent/45' : ''}`}
+                className={`rounded-lg bg-surface p-4 ${project.liveUrl ? 'group relative inset-ring inset-ring-transparent transition-shadow hover:inset-ring-accent/45' : ''}`}
               >
                 <h3 className="flex flex-wrap items-center gap-x-3 gap-y-1 font-semibold">
-                  {project.status === 'live' ? (
+                  {project.liveUrl ? (
                     <a
                       className="inline-flex items-center gap-1 transition-colors group-hover:text-accent after:absolute after:inset-0 after:rounded-lg focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-accent"
                       href={project.liveUrl}
@@ -128,12 +128,12 @@ export default function Home() {
                       </span>
                     </a>
                   ) : (
-                    <>
-                      {project.title}
-                      <span className="rounded-full border border-border px-2.5 py-0.5 text-xs font-medium text-muted">
-                        In progress
-                      </span>
-                    </>
+                    project.title
+                  )}
+                  {project.status === 'in-progress' && (
+                    <span className="rounded-full border border-border px-2.5 py-0.5 text-xs font-medium text-muted">
+                      In progress
+                    </span>
                   )}
                 </h3>
                 <p className="mt-4 text-muted text-pretty transition-colors group-hover:text-strong">
