@@ -1,6 +1,3 @@
-import type { StaticImageData } from 'next/image';
-import bulkImg from '@/assets/bulk-operations-dashboard.webp';
-
 type LiveProject = {
   status: 'live';
   title: string;
@@ -8,7 +5,6 @@ type LiveProject = {
   metric: string;
   stack: string[];
   liveUrl: string;
-  screenshot: StaticImageData;
 };
 
 type InProgressProject = {
@@ -35,7 +31,6 @@ export const projects: Project[] = [
       'TanStack Router',
     ],
     liveUrl: 'https://bulk-operations-dashboard.vercel.app',
-    screenshot: bulkImg,
   },
   {
     status: 'in-progress',
@@ -43,5 +38,12 @@ export const projects: Project[] = [
     description:
       'Runs an incident from the inside and tells users about it on a public status page. The team opens an incident, moves it through its phases and posts updates; the public page is served from cache, so it stays up when the product is down, and shows an update as soon as it is published.',
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Prisma', 'PostgreSQL'],
+  },
+  {
+    status: 'in-progress',
+    title: 'Team planner',
+    description:
+      'A sprint board for planning and tracking work. Items move between states and can be reordered with the pointer or the keyboard. The focus is on what a rich client has to get right: a large backlog that stays smooth, and a board that stays consistent when several people edit simultaneously.',
+    stack: ['React', 'TypeScript', 'HeroUI', 'React Aria', 'Tailwind CSS'],
   },
 ];

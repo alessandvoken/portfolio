@@ -107,10 +107,10 @@ export default function Home() {
         </section>
         <section
           id="projects"
-          className="mb-24 scroll-mt-16 space-y-4 lg:scroll-mt-24"
+          className="mb-24 min-h-[calc(100lvh-13rem)] scroll-mt-16 space-y-4 md:min-h-[calc(100lvh-15rem)] lg:min-h-[calc(100lvh-18rem)] lg:scroll-mt-24"
         >
           <h2 className="sr-only">Projects</h2>
-          <ul className="space-y-12">
+          <ul className="space-y-18">
             {projects.map((project) => (
               <li
                 key={project.title}
@@ -136,14 +136,6 @@ export default function Home() {
                     </>
                   )}
                 </h3>
-                {project.status === 'live' && (
-                  <Image
-                    src={project.screenshot}
-                    alt=""
-                    loading="eager"
-                    className="mt-3 h-auto w-full rounded-md border border-border"
-                  />
-                )}
                 <p className="mt-4 text-muted text-pretty transition-colors group-hover:text-strong">
                   {project.description}
                 </p>
