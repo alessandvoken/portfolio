@@ -23,7 +23,7 @@ export const projects: Project[] = [
     title: 'Team planner',
     description:
       'A sprint board for planning and tracking work. Items move between states and can be reordered with the pointer or the keyboard. The focus is on what a rich client has to get right: a large backlog that stays smooth, and a board that stays consistent when several people edit simultaneously.',
-    stack: ['React', 'TypeScript', 'HeroUI', 'React Aria', 'Tailwind CSS'],
+    stack: ['Next.js', 'React', 'TypeScript', 'React Aria', 'Tailwind CSS'],
     liveUrl: 'https://team-planner-delta.vercel.app',
   },
   {
@@ -32,13 +32,7 @@ export const projects: Project[] = [
     description:
       'Sends reminders for a batch of invoices and deals with the ones that fail: temporary failures can be retried on their own, and reminders can be undone. Filters, sorting and pages live in the URL, so a view survives a reload and can be shared. A built-in panel makes the server slow or unreliable, to try each case.',
     metric: 'LCP 0.6 s · CLS 0 · 38 unit tests',
-    stack: [
-      'React',
-      'TypeScript',
-      'Mantine',
-      'TanStack Query',
-      'TanStack Router',
-    ],
+    stack: ['React', 'TypeScript', 'TanStack Query', 'TanStack Router', 'MSW'],
     liveUrl: 'https://bulk-operations-dashboard.vercel.app',
   },
   {
