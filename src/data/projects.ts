@@ -19,6 +19,14 @@ export type Project = LiveProject | InProgressProject;
 
 export const projects: Project[] = [
   {
+    status: 'in-progress',
+    title: 'Team planner',
+    description:
+      'A sprint board for planning and tracking work. Items move between states and can be reordered with the pointer or the keyboard. The focus is on what a rich client has to get right: a large backlog that stays smooth, and a board that stays consistent when several people edit simultaneously.',
+    stack: ['React', 'TypeScript', 'HeroUI', 'React Aria', 'Tailwind CSS'],
+    liveUrl: 'https://team-planner-delta.vercel.app',
+  },
+  {
     status: 'live',
     title: 'Bulk operations dashboard',
     description:
@@ -32,14 +40,6 @@ export const projects: Project[] = [
       'TanStack Router',
     ],
     liveUrl: 'https://bulk-operations-dashboard.vercel.app',
-  },
-  {
-    status: 'in-progress',
-    title: 'Team planner',
-    description:
-      'A sprint board for planning and tracking work. Items move between states and can be reordered with the pointer or the keyboard. The focus is on what a rich client has to get right: a large backlog that stays smooth, and a board that stays consistent when several people edit simultaneously.',
-    stack: ['React', 'TypeScript', 'HeroUI', 'React Aria', 'Tailwind CSS'],
-    liveUrl: 'https://team-planner-delta.vercel.app',
   },
   {
     status: 'in-progress',

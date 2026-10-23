@@ -9,11 +9,15 @@ import { projects } from '@/data/projects';
 import Image from 'next/image';
 import inLimboImg from '@/assets/in-limbo-preview.webp';
 import { ExperienceTimeline } from '@/components/experience-timeline';
-import { MobileSectionNav, SectionNav } from '@/components/section-nav';
+import {
+  MobileSectionNav,
+  SectionFocus,
+  SectionNav,
+} from '@/components/section-nav';
 
 export default function Home() {
   return (
-    <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-12 md:py-20 grid gap-16 lg:gap-12 lg:grid-cols-2 lg:py-0 overflow-x-clip motion-safe:animate-fade-narrow motion-safe:lg:animate-fade-wide">
+    <SectionFocus className="mx-auto grid max-w-7xl gap-8 px-6 py-12 md:gap-12 md:px-12 md:py-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:px-16 lg:py-0 xl:gap-20 xl:px-20 overflow-x-clip motion-safe:animate-fade-narrow motion-safe:lg:animate-fade-wide">
       <header className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:justify-between lg:py-24">
         <div>
           <h1 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-balance motion-safe:animate-nav-in">
@@ -49,10 +53,10 @@ export default function Home() {
         </ul>
       </header>
       <MobileSectionNav />
-      <main className="lg:py-24">
+      <main className="flex min-w-0 flex-col gap-16 md:gap-20 lg:gap-24 lg:py-24">
         <section
           id="about"
-          className="mb-24 scroll-mt-16 space-y-4 motion-safe:animate-nav-in lg:scroll-mt-24"
+          className="scroll-mt-16 space-y-5 leading-relaxed motion-safe:animate-nav-in lg:scroll-mt-24"
         >
           <h2 className="sr-only">About</h2>
           <p className="text-muted text-pretty">
@@ -87,7 +91,7 @@ export default function Home() {
         </section>
         <section
           id="experience"
-          className="mb-24 scroll-mt-16 space-y-4 lg:scroll-mt-24"
+          className="scroll-mt-16 lg:scroll-mt-24"
         >
           <h2 className="sr-only">Experience</h2>
 
@@ -96,7 +100,7 @@ export default function Home() {
           <a
             href="/Alessandro_Perchiazzi_Frontend_Engineer_CV.pdf"
             target="_blank"
-            className="group/cv mt-12 inline-flex items-center gap-1 font-semibold transition-colors hover:text-accent motion-safe:animate-nav-in [--enter-delay:3750ms]"
+            className="group/cv mt-10 inline-flex items-center gap-1 font-semibold transition-colors hover:text-accent md:mt-12 motion-safe:animate-nav-in [--enter-delay:3750ms]"
           >
             View Full Résumé
             <span className="sr-only"> (PDF, opens in a new tab)</span>
@@ -107,14 +111,14 @@ export default function Home() {
         </section>
         <section
           id="projects"
-          className="mb-24 min-h-[calc(100lvh-13rem)] scroll-mt-16 space-y-4 md:min-h-[calc(100lvh-15rem)] lg:min-h-[calc(100lvh-18rem)] lg:scroll-mt-24"
+          className="min-h-[calc(100lvh-7rem)] scroll-mt-16 lg:min-h-[calc(100lvh-12rem)] lg:scroll-mt-24"
         >
           <h2 className="sr-only">Projects</h2>
-          <ul className="space-y-18">
+          <ul className="project-list grid gap-6 md:gap-8">
             {projects.map((project) => (
               <li
                 key={project.title}
-                className={`rounded-lg bg-surface p-4 ${project.liveUrl ? 'group relative inset-ring inset-ring-transparent transition-shadow hover:inset-ring-accent/45' : ''}`}
+                className={`rounded-lg bg-surface p-5 md:p-6 ${project.liveUrl ? 'group relative inset-ring inset-ring-transparent hover:inset-ring-accent/45' : ''}`}
               >
                 <h3 className="flex flex-wrap items-center gap-x-3 gap-y-1 font-semibold">
                   {project.liveUrl ? (
@@ -130,13 +134,13 @@ export default function Home() {
                   ) : (
                     project.title
                   )}
-                  {project.status === 'in-progress' && (
+                  {project.status === 'in-progress' && !project.liveUrl && (
                     <span className="rounded-full border border-border px-2.5 py-0.5 text-xs font-medium text-muted">
                       In progress
                     </span>
                   )}
                 </h3>
-                <p className="mt-4 text-muted text-pretty transition-colors group-hover:text-strong">
+                <p className="mt-3 leading-relaxed text-muted text-pretty transition-colors group-hover:text-strong">
                   {project.description}
                 </p>
                 {project.status === 'live' && (
@@ -144,7 +148,7 @@ export default function Home() {
                     {project.metric}
                   </p>
                 )}
-                <ul className="mt-3 flex flex-wrap gap-2">
+                <ul className="mt-4 flex flex-wrap gap-2">
                   {project.stack.map((tag) => (
                     <li
                       key={tag}
@@ -159,6 +163,6 @@ export default function Home() {
           </ul>
         </section>
       </main>
-    </div>
+    </SectionFocus>
   );
 }

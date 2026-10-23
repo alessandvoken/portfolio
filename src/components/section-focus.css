@@ -1,0 +1,43 @@
+.section-focus main > section {
+  /* Keep the containing block stable while blur changes during scrolling. */
+  filter: blur(0px);
+  transition: opacity 300ms ease, filter 300ms ease;
+}
+
+.section-focus main .text-muted {
+  transition: color 300ms ease;
+}
+
+.project-list > li {
+  filter: blur(0px);
+  transition: opacity 300ms ease, filter 300ms ease, box-shadow 300ms ease;
+}
+
+.section-focus[data-focused-section] main > section,
+.section-focus[data-focused-section='projects'] .project-list:has(:focus-visible) > li:not(:has(:focus-visible)) {
+  opacity: 0.5;
+  filter: blur(1px);
+}
+
+.section-focus[data-focused-section='about'] [id='about'],
+.section-focus[data-focused-section='experience'] [id='experience'],
+.section-focus[data-focused-section='projects'] [id='projects'] {
+  --muted: var(--strong);
+  opacity: 1;
+  filter: blur(0px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .section-focus[data-focused-section='projects'] .project-list:not(:has(:focus-visible)):has(> li:hover) > li:not(:hover) {
+    opacity: 0.5;
+    filter: blur(1px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-focus main > section,
+  .section-focus main .text-muted,
+  .project-list > li {
+    transition: none;
+  }
+}
