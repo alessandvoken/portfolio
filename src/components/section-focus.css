@@ -13,8 +13,11 @@
   transition: opacity 300ms ease, filter 300ms ease, box-shadow 300ms ease;
 }
 
-.section-focus[data-focused-section] main > section,
-.section-focus[data-focused-section='projects'] .project-list:has(:focus-visible) > li:not(:has(:focus-visible)) {
+.section-focus[data-focused-section] main > section:where(:not([id='projects'])),
+.section-focus[data-focused-section]:not([data-focused-section='projects']) .project-list > li:not([data-unavailable]),
+.section-focus[data-focused-section='projects'] .project-list:has(> li:not([data-unavailable]) :focus-visible) > li:not(:has(:focus-visible)):not([data-unavailable]),
+.project-list > [data-unavailable] > :not(h3),
+.project-list > [data-unavailable] h3 > :not(.project-status) {
   opacity: 0.5;
   filter: blur(1px);
 }
@@ -28,7 +31,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .section-focus[data-focused-section='projects'] .project-list:not(:has(:focus-visible)):has(> li:hover) > li:not(:hover) {
+  .section-focus[data-focused-section='projects'] .project-list:not(:has(:focus-visible)):has(> li:not([data-unavailable]):hover) > li:not(:hover):not([data-unavailable]) {
     opacity: 0.5;
     filter: blur(1px);
   }

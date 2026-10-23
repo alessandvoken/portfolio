@@ -118,6 +118,7 @@ export default function Home() {
             {projects.map((project) => (
               <li
                 key={project.title}
+                data-unavailable={!project.liveUrl || undefined}
                 className={`rounded-lg bg-surface p-5 md:p-6 ${project.liveUrl ? 'group relative inset-ring inset-ring-transparent hover:inset-ring-accent/45' : ''}`}
               >
                 <h3 className="flex flex-wrap items-center gap-x-3 gap-y-1 font-semibold">
@@ -132,10 +133,10 @@ export default function Home() {
                       </span>
                     </a>
                   ) : (
-                    project.title
+                    <span>{project.title}</span>
                   )}
                   {project.status === 'in-progress' && !project.liveUrl && (
-                    <span className="rounded-full border border-border px-2.5 py-0.5 text-xs font-medium text-muted">
+                    <span className="project-status rounded-full border border-border px-2.5 py-0.5 text-xs font-medium text-muted">
                       In progress
                     </span>
                   )}

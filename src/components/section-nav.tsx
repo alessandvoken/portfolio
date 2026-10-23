@@ -4,7 +4,6 @@ import {
   createContext,
   useContext,
   useEffect,
-  useLayoutEffect,
   useState,
   useSyncExternalStore,
   type ReactNode,
@@ -23,7 +22,7 @@ const linkClassName =
 const SectionFocusContext = createContext<{
   activeId: string;
   selectSection: (id: string) => void;
-}>({ activeId: 'experience', selectSection: () => {} });
+}>({ activeId: sections[0].id, selectSection: () => {} });
 
 export function SectionFocus({
   children,
@@ -35,38 +34,25 @@ export function SectionFocus({
   const scrolledId = useSyncExternalStore(
     subscribe,
     getActiveId,
-    () => 'experience',
+    () => sections[0].id,
   );
   const [clickedId, setClickedId] = useState<string | null>(null);
+  const [isIntroPlaying, setIsIntroPlaying] = useState(true);
   const activeId = clickedId ?? scrolledId;
 
-  useLayoutEffect(() => {
-    const initialId = window.location.hash.slice(1) || 'experience';
-    const previousRestoration = window.history.scrollRestoration;
-    window.history.scrollRestoration = 'manual';
+  useEffect(() => {
     let cancelled = false;
+    const animations = document
+      .getElementById('experience')
+      ?.getAnimations({ subtree: true }) ?? [];
 
-    const alignInitialSection = () => {
-      void document.fonts.ready.then(() => {
-        if (cancelled) return;
-
-        document.getElementById(initialId)?.scrollIntoView({
-          behavior: 'instant',
-          block: 'start',
-        });
-      });
-    };
-
-    if (document.readyState === 'complete') {
-      alignInitialSection();
-    } else {
-      window.addEventListener('load', alignInitialSection, { once: true });
-    }
+    // Scrolling must not obscure the timeline before its entrance has finished.
+    void Promise.allSettled(animations.map((animation) => animation.finished)).then(() => {
+      if (!cancelled) setIsIntroPlaying(false);
+    });
 
     return () => {
       cancelled = true;
-      window.removeEventListener('load', alignInitialSection);
-      window.history.scrollRestoration = previousRestoration;
     };
   }, []);
 
@@ -97,7 +83,7 @@ export function SectionFocus({
     >
       <div
         className={`section-focus ${className}`}
-        data-focused-section={activeId}
+        data-focused-section={isIntroPlaying ? undefined : activeId}
       >
         {children}
       </div>
