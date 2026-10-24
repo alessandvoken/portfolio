@@ -23,7 +23,7 @@ export function ProjectCard({
     viewportHeight: 0,
   });
   const inView = useInView(cardRef, {
-    margin: `0px 0px ${-entrance.viewportHeight * 0.22}px 0px`,
+    margin: `0px 0px ${-entrance.viewportHeight * 0.08}px 0px`,
   });
 
   // Keep revealed cards visible until About is selected or reached by scrolling.
@@ -43,7 +43,7 @@ export function ProjectCard({
       setEntrance({
         visible:
           !!reducedMotion ||
-          card.getBoundingClientRect().top < window.innerHeight * 0.78,
+          card.getBoundingClientRect().top < window.innerHeight * 0.92,
         duration: 0,
         viewportHeight: window.innerHeight,
       });
