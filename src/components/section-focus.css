@@ -1,44 +1,45 @@
-.section-focus main > section {
-  /* Keep the containing block stable while blur changes during scrolling. */
-  filter: blur(0px);
-  transition: opacity 300ms ease, filter 300ms ease;
-}
-
 .section-focus main .text-muted {
   transition: color 300ms ease;
 }
 
-.project-list > li {
-  filter: blur(0px);
-  transition: opacity 300ms ease, filter 300ms ease, box-shadow 300ms ease;
+@property --project-opacity {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 1;
 }
 
-.section-focus[data-focused-section] main > section:where(:not([id='projects'])),
-.section-focus[data-focused-section]:not([data-focused-section='projects']) .project-list > li:not([data-unavailable]),
-.section-focus[data-focused-section='projects'] .project-list:has(> li:not([data-unavailable]) :focus-visible) > li:not(:has(:focus-visible)):not([data-unavailable]),
+.project-list > li {
+  opacity: calc(var(--reveal-opacity, 1) * var(--project-opacity));
+  transition: --project-opacity 300ms ease, box-shadow 300ms ease;
+}
+
+.project-list > li:focus-within {
+  opacity: 1;
+  transform: none !important;
+  transition: none;
+}
+
+.section-focus[data-focused-section='projects'] .project-list:has(> li:not([data-unavailable]) :focus-visible) > li:not(:has(:focus-visible)):not([data-unavailable]) {
+  --project-opacity: 0.5;
+}
+
 .project-list > [data-unavailable] > :not(h3),
 .project-list > [data-unavailable] h3 > :not(.project-status) {
   opacity: 0.5;
-  filter: blur(1px);
 }
 
 .section-focus[data-focused-section='about'] [id='about'],
-.section-focus[data-focused-section='experience'] [id='experience'],
 .section-focus[data-focused-section='projects'] [id='projects'] {
   --muted: var(--strong);
-  opacity: 1;
-  filter: blur(0px);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .section-focus[data-focused-section='projects'] .project-list:not(:has(:focus-visible)):has(> li:not([data-unavailable]):hover) > li:not(:hover):not([data-unavailable]) {
-    opacity: 0.5;
-    filter: blur(1px);
+    --project-opacity: 0.5;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .section-focus main > section,
   .section-focus main .text-muted,
   .project-list > li {
     transition: none;

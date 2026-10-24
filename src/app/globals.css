@@ -52,15 +52,6 @@
   --animate-nav-in: nav-in 200ms ease-out var(--enter-delay, 0ms) backwards;
   --animate-fade-narrow: fade-narrow 300ms ease-out backwards;
   --animate-fade-wide: fade-wide 300ms ease-out backwards;
-  --animate-dot-in: dot-in 200ms cubic-bezier(0.34, 1.56, 0.64, 1)
-    calc(600ms + var(--step, 0) * 750ms + var(--row, 0) * 150ms) backwards;
-  --animate-job-in: job-in 400ms cubic-bezier(0.22, 1, 0.36, 1)
-    calc(600ms + var(--step, 0) * 750ms + var(--row, 0) * 150ms + 200ms) backwards;
-  --animate-client-in: nav-in 200ms ease-out
-    calc(600ms + var(--step, 0) * 750ms + var(--row, 0) * 150ms + 200ms) backwards;
-  --animate-draw-down: draw-down 400ms ease-in-out
-    calc(600ms + var(--next-step, 0) * 750ms + var(--next-row, 0) * 150ms - 400ms)
-    backwards;
 
   @keyframes nav-in {
     from {
@@ -80,23 +71,29 @@
       opacity: 0;
     }
   }
+}
 
-  @keyframes dot-in {
-    from {
-      transform: scale(0);
+@utility link-icon {
+  display: inline-block;
+
+  @media (prefers-reduced-motion: no-preference) {
+    a:focus-visible > & {
+      animation: link-icon-nudge 450ms ease-in-out infinite alternate;
+    }
+
+    @media (hover: hover) {
+      a:hover > & {
+        animation: link-icon-nudge 450ms ease-in-out infinite alternate;
+      }
     }
   }
+}
 
-  @keyframes draw-down {
-    from {
-      transform: scaleY(0);
-    }
+@keyframes link-icon-nudge {
+  from {
+    transform: translate(0, 0);
   }
-
-  @keyframes job-in {
-    from {
-      opacity: 0;
-      transform: translateX(var(--from-dot, 0));
-    }
+  to {
+    transform: translate(3px, -3px);
   }
 }

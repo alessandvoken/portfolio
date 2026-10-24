@@ -8,6 +8,8 @@ import {
   useSyncExternalStore,
   type ReactNode,
 } from 'react';
+import { ScrollToProjects } from '@/components/scroll-to-projects';
+import { CvLink } from '@/components/cv-link';
 import './section-focus.css';
 
 const sections = [
@@ -24,6 +26,10 @@ const SectionFocusContext = createContext<{
   selectSection: (id: string) => void;
 }>({ activeId: sections[0].id, selectSection: () => {} });
 
+export function useSectionFocus() {
+  return useContext(SectionFocusContext);
+}
+
 export function SectionFocus({
   children,
   className,
@@ -37,24 +43,12 @@ export function SectionFocus({
     () => sections[0].id,
   );
   const [clickedId, setClickedId] = useState<string | null>(null);
-  const [isIntroPlaying, setIsIntroPlaying] = useState(true);
   const activeId = clickedId ?? scrolledId;
-
-  useEffect(() => {
-    let cancelled = false;
-    const animations = document
-      .getElementById('experience')
-      ?.getAnimations({ subtree: true }) ?? [];
-
-    // Scrolling must not obscure the timeline before its entrance has finished.
-    void Promise.allSettled(animations.map((animation) => animation.finished)).then(() => {
-      if (!cancelled) setIsIntroPlaying(false);
-    });
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  const projectsNeedScroll = useSyncExternalStore(
+    subscribeProjectsVisibility,
+    getProjectsNeedScroll,
+    () => null,
+  );
 
   // Hold the clicked section while the anchor's smooth scroll passes other sections.
   useEffect(() => {
@@ -83,9 +77,13 @@ export function SectionFocus({
     >
       <div
         className={`section-focus ${className}`}
-        data-focused-section={isIntroPlaying ? undefined : activeId}
+        data-focused-section={activeId}
       >
         {children}
+        <ScrollToProjects
+          visible={projectsNeedScroll}
+          onNavigate={() => setClickedId('projects')}
+        />
       </div>
     </SectionFocusContext.Provider>
   );
@@ -97,6 +95,34 @@ function subscribe(onChange: () => void) {
   return () => {
     window.removeEventListener('scroll', onChange);
     window.removeEventListener('resize', onChange);
+  };
+}
+
+function getProjectsNeedScroll() {
+  const card = document.querySelector('.project-list > li');
+  if (!card?.hasAttribute('data-reveal-state')) return null;
+  const { top, bottom } = card.getBoundingClientRect();
+  if (bottom <= 0) return false;
+  return card.getAttribute('data-reveal-state') === 'hidden' ||
+    top >= window.innerHeight || Number(getComputedStyle(card).opacity) === 0;
+}
+
+function subscribeProjectsVisibility(onChange: () => void) {
+  const unsubscribe = subscribe(onChange);
+  const observer = new IntersectionObserver(onChange);
+  const animationObserver = new MutationObserver(onChange);
+  const card = document.querySelector('.project-list > li');
+  if (card) {
+    observer.observe(card);
+    animationObserver.observe(card, {
+      attributes: true,
+      attributeFilter: ['style', 'data-reveal-state'],
+    });
+  }
+  return () => {
+    unsubscribe();
+    observer.disconnect();
+    animationObserver.disconnect();
   };
 }
 
@@ -128,7 +154,7 @@ function getActiveId() {
 }
 
 export function SectionNav() {
-  const { activeId, selectSection } = useContext(SectionFocusContext);
+  const { activeId, selectSection } = useSectionFocus();
 
   // Hidden with visibility, not display, so its entrance doesn't replay when the viewport crosses lg
   return (
@@ -153,20 +179,27 @@ export function SectionNav() {
             </a>
           </li>
         ))}
+        <li
+          style={{ '--enter-delay': `${200 + sections.length * 150}ms` }}
+          className="motion-safe:animate-nav-in"
+        >
+          <CvLink className="py-2" />
+        </li>
       </ul>
     </nav>
   );
 }
 
 export function MobileSectionNav() {
-  const { activeId, selectSection } = useContext(SectionFocusContext);
+  const { activeId, selectSection } = useSectionFocus();
 
   return (
     <nav
+      id="mobile-section-nav"
       aria-label="Sections"
-      className="sticky top-0 z-10 -mx-6 bg-bg/80 px-6 backdrop-blur-sm md:-mx-12 md:px-12 lg:hidden"
+      className="sticky top-0 z-10 -mx-6 bg-bg/80 px-6 md:-mx-12 md:px-12 lg:hidden"
     >
-      <ul className="flex gap-6 motion-safe:animate-nav-in">
+      <ul className="flex items-center justify-between gap-2 motion-safe:animate-nav-in sm:justify-start sm:gap-6">
         {sections.map(({ id, label }) => (
           <li key={id}>
             <a
@@ -179,6 +212,9 @@ export function MobileSectionNav() {
             </a>
           </li>
         ))}
+        <li>
+          <CvLink className="py-3" />
+        </li>
       </ul>
     </nav>
   );
