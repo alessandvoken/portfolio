@@ -6,7 +6,7 @@
   --surface: #e2e6df;
   --strong: #1a1e1b;
   --muted: #535b55;
-  --accent: #2d5e4c;
+  --accent: #216849;
   --border: #d6dbd3;
 }
 
@@ -42,6 +42,10 @@
 }
 
 @layer base {
+  html {
+    font-size: 16px;
+  }
+
   :focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;

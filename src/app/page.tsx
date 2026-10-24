@@ -64,10 +64,10 @@ export default function Home() {
                   unavailable={!project.liveUrl}
                   className={`rounded-lg bg-surface p-5 md:p-6 ${project.liveUrl ? 'group relative inset-ring inset-ring-transparent hover:inset-ring-accent/45' : ''}`}
                 >
-                  <h3 className="flex flex-wrap items-center gap-x-3 gap-y-1 font-semibold">
+                  <h3 className="flex flex-wrap items-center gap-x-3 gap-y-1 font-semibold text-accent">
                     {project.liveUrl ? (
                       <a
-                        className="inline-flex items-center gap-1 transition-colors group-hover:text-accent after:absolute after:inset-0 after:rounded-lg focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-accent"
+                        className="inline-flex items-center gap-1 after:absolute after:inset-0 after:rounded-lg focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-accent"
                         href={project.liveUrl}
                       >
                         {project.title}
@@ -84,11 +84,11 @@ export default function Home() {
                       </span>
                     )}
                   </h3>
-                  <p className="mt-3 leading-relaxed text-muted text-pretty transition-colors group-hover:text-strong">
+                  <p className="mt-3 leading-relaxed text-muted text-pretty motion-safe:transition-colors group-hover:text-strong group-focus-within:text-strong">
                     {project.description}
                   </p>
                   {project.status === 'live' && (
-                    <p className="mt-2 font-medium text-muted tabular-nums transition-colors group-hover:text-strong">
+                    <p className="mt-2 font-medium text-muted tabular-nums">
                       {project.metric}
                     </p>
                   )}

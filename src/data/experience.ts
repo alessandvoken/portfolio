@@ -16,7 +16,7 @@ export const jobs: Job[] = [
     start: 2024,
     end: null,
     role: 'Frontend Engineer',
-    company: 'IBM',
+    company: 'IBM, Italy',
     projects: [
       {
         client: 'State Accounting Office',
@@ -44,12 +44,12 @@ export const jobs: Job[] = [
     start: 2023,
     end: 2024,
     role: 'Frontend Developer',
-    company: 'Freelance, London',
+    company: 'Freelance, U.K.',
   },
   {
     start: 2017,
     end: 2023,
     role: 'Documentary Photographer',
-    company: 'Freelance, London',
+    company: 'Freelance, U.K.',
   },
 ];

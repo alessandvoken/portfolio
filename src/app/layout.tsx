@@ -17,7 +17,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       lang="en"
       className={`${albertSans.className} motion-safe:scroll-smooth`}
     >
-      <body className="bg-bg text-strong">{children}</body>
+      <body className="bg-bg text-strong antialiased">{children}</body>
     </html>
   );
 }

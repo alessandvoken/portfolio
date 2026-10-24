@@ -1,7 +1,3 @@
-.section-focus main .text-muted {
-  transition: color 300ms ease;
-}
-
 @property --project-opacity {
   syntax: '<number>';
   inherits: false;
@@ -28,19 +24,7 @@
   opacity: 0.5;
 }
 
-.section-focus[data-focused-section='about'] [id='about'],
-.section-focus[data-focused-section='projects'] [id='projects'] {
-  --muted: var(--strong);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .section-focus[data-focused-section='projects'] .project-list:not(:has(:focus-visible)):has(> li:not([data-unavailable]):hover) > li:not(:hover):not([data-unavailable]) {
-    --project-opacity: 0.5;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .section-focus main .text-muted,
   .project-list > li {
     transition: none;
   }
