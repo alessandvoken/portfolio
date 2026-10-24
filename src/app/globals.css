@@ -97,3 +97,18 @@
     transform: translate(3px, -3px);
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .timeline-role,
+  .timeline-client {
+    opacity: 0;
+  }
+
+  .timeline-dot {
+    transform: scale(0);
+  }
+
+  .timeline-line {
+    transform: scaleY(0);
+  }
+}
