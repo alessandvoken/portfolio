@@ -23,7 +23,7 @@ export const projects: Project[] = [
     title: 'Team planner',
     description:
       'A sprint board for planning and tracking work. Items move between states and can be reordered with the pointer or the keyboard. The focus is on what a rich client has to get right: a large backlog that stays smooth, and a board that stays consistent when several people edit simultaneously.',
-    stack: ['Next.js', 'React', 'TypeScript', 'React Aria', 'Tailwind CSS'],
+    stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Supabase'],
     liveUrl: 'https://team-planner-delta.vercel.app',
   },
   {

@@ -96,7 +96,7 @@ export default function Home() {
                     {project.stack.map((tag) => (
                       <li
                         key={tag}
-                        className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium leading-5 text-accent"
+                        className="rounded-full px-3 py-1 text-xs font-medium leading-5 text-muted ring-1 ring-inset ring-muted/30"
                       >
                         {tag}
                       </li>
