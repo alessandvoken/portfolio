@@ -6,7 +6,7 @@ export function Header() {
   return (
     <header className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:justify-between lg:py-24">
       <div>
-        <h1 className="text-6xl lg:text-6xl tracking-[-0.02em] text-balance motion-safe:animate-nav-in">
+        <h1 className="text-6xl lg:text-6xl font-medium tracking-[-0.02em] text-balance motion-safe:animate-nav-in">
           Alessandro Perchiazzi
         </h1>
         <p className="mt-2 text-xl motion-safe:animate-nav-in">
