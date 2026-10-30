@@ -87,11 +87,6 @@ export default function Home() {
                   <p className="mt-3 leading-relaxed text-muted text-pretty motion-safe:transition-colors group-hover:text-strong group-focus-within:text-strong">
                     {project.description}
                   </p>
-                  {project.status === 'live' && (
-                    <p className="mt-2 font-medium text-muted tabular-nums">
-                      {project.metric}
-                    </p>
-                  )}
                   <ul className="mt-4 flex flex-wrap gap-2">
                     {project.stack.map((tag) => (
                       <li

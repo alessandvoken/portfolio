@@ -2,7 +2,6 @@ type LiveProject = {
   status: 'live';
   title: string;
   description: string;
-  metric: string;
   stack: string[];
   liveUrl: string;
 };
@@ -22,7 +21,7 @@ export const projects: Project[] = [
     status: 'in-progress',
     title: 'Team planner',
     description:
-      'A sprint board for planning and tracking work. Items move between states and can be reordered with the pointer or the keyboard. The focus is on what a rich client has to get right: a large backlog that stays smooth, and a board that stays consistent when several people edit simultaneously.',
+      'A sprint board for planning and tracking work. Move and reorder items with a pointer or keyboard, with changes saved between visits. If someone changes a card while you are working, the board refreshes rather than overwriting their changes.',
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Supabase'],
     liveUrl: 'https://team-planner-delta.vercel.app',
   },
@@ -31,7 +30,6 @@ export const projects: Project[] = [
     title: 'Bulk operations dashboard',
     description:
       'Sends reminders for a batch of invoices and deals with the ones that fail: temporary failures can be retried on their own, and reminders can be undone. Filters, sorting and pages live in the URL, so a view survives a reload and can be shared. A built-in panel makes the server slow or unreliable, to try each case.',
-    metric: 'LCP 0.6 s · CLS 0 · 38 unit tests',
     stack: ['React', 'TypeScript', 'TanStack Query', 'TanStack Router', 'MSW'],
     liveUrl: 'https://bulk-operations-dashboard.vercel.app',
   },
