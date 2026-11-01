@@ -1,7 +1,14 @@
 'use client';
 
 import { motion, useInView, useReducedMotion } from 'motion/react';
-import { useCallback, useRef, useState, type ReactNode } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type MouseEvent,
+  type ReactNode,
+} from 'react';
 import { useSectionFocus } from '@/components/section-nav';
 
 export function ProjectCard({
@@ -30,7 +37,11 @@ export function ProjectCard({
   if (previousSection !== activeId) {
     setPreviousSection(activeId);
     if (activeId === 'about') {
-      setEntrance((current) => ({ ...current, visible: false, duration: 0.28 }));
+      setEntrance((current) => ({
+        ...current,
+        visible: false,
+        duration: 0.28,
+      }));
     }
   } else if (inView && activeId !== 'about' && !entrance.visible) {
     setEntrance((current) => ({ ...current, visible: true, duration: 0.7 }));
@@ -56,7 +67,13 @@ export function ProjectCard({
       ref={ref}
       className={className}
       data-unavailable={unavailable || undefined}
-      data-reveal-state={entrance.viewportHeight > 0 ? (entrance.visible ? 'visible' : 'hidden') : undefined}
+      data-reveal-state={
+        entrance.viewportHeight > 0
+          ? entrance.visible
+            ? 'visible'
+            : 'hidden'
+          : undefined
+      }
       initial={false}
       animate={reducedMotion || entrance.visible ? 'visible' : 'hidden'}
       variants={{
@@ -77,9 +94,43 @@ export function ProjectCard({
 }
 
 export function ProjectList({ children }: { children: ReactNode }) {
+  const [navigating, setNavigating] = useState(false);
+
+  // Back from the external site, the bfcache restores the spinner still on.
+  useEffect(() => {
+    const reset = () => setNavigating(false);
+    window.addEventListener('pageshow', reset);
+    return () => window.removeEventListener('pageshow', reset);
+  }, []);
+
+  // Modified clicks open another tab and leave this page in place.
+  const handleClick = (event: MouseEvent) => {
+    const sameTab = !(
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    );
+    if (sameTab && (event.target as Element).closest('a')) setNavigating(true);
+  };
+
   return (
-    <ul className="project-list grid gap-6 md:gap-12">
-      {children}
-    </ul>
+    <>
+      <ul className="project-list grid gap-6 md:gap-12" onClick={handleClick}>
+        {children}
+      </ul>
+      {navigating && (
+        <div
+          role="status"
+          className="fixed inset-0 z-50 grid cursor-progress place-items-center bg-black/50 backdrop-blur-sm motion-safe:animate-fade-narrow"
+        >
+          <span
+            aria-hidden="true"
+            className="block size-16 animate-spin rounded-full border-4 border-accent/25 border-t-accent"
+          />
+          <span className="sr-only">Loading project</span>
+        </div>
+      )}
+    </>
   );
 }
