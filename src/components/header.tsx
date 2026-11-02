@@ -16,7 +16,11 @@ export function Header() {
       </div>
       <ul className="mt-8 flex items-center gap-4 motion-safe:animate-nav-in">
         <li>
-          <IconLink href="https://github.com/alessandvoken" label="GitHub">
+          <IconLink
+            href="https://github.com/alessandvoken"
+            label="GitHub"
+            newTab
+          >
             <GitHubIcon />
           </IconLink>
         </li>
@@ -24,6 +28,7 @@ export function Header() {
           <IconLink
             href="https://www.linkedin.com/in/alessandro-perchiazzi"
             label="LinkedIn"
+            newTab
           >
             <LinkedInIcon />
           </IconLink>
