@@ -27,6 +27,14 @@ export const projects: Project[] = [
   },
   {
     status: 'live',
+    title: 'Multiselect with tags',
+    description:
+      'An alternative wrapper around react-select. A copy-paste component with its own styles, tests and accessibility checks.',
+    stack: ['React', 'TypeScript', 'Vitest', 'Playwright'],
+    liveUrl: 'https://react-multiselect-with-tags.vercel.app',
+  },
+  {
+    status: 'live',
     title: 'Bulk operations dashboard',
     description:
       'Sends reminders for a batch of invoices and deals with the ones that fail: temporary failures can be retried on their own, and reminders can be undone. Filters, sorting and pages live in the URL, so a view survives a reload and can be shared. A built-in panel makes the server slow or unreliable, to try each case.',
