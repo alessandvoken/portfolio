@@ -25,14 +25,7 @@ export const projects: Project[] = [
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Supabase'],
     liveUrl: 'https://team-planner-delta.vercel.app',
   },
-  {
-    status: 'live',
-    title: 'Multiselect with tags',
-    description:
-      'An alternative wrapper around react-select. A copy-paste component with its own styles, tests and accessibility checks.',
-    stack: ['React', 'TypeScript', 'Vitest', 'Playwright'],
-    liveUrl: 'https://react-multiselect-with-tags.vercel.app',
-  },
+
   {
     status: 'live',
     title: 'Bulk operations dashboard',
@@ -40,6 +33,14 @@ export const projects: Project[] = [
       'Sends reminders for a batch of invoices and deals with the ones that fail: temporary failures can be retried on their own, and reminders can be undone. Filters, sorting and pages live in the URL, so a view survives a reload and can be shared. A built-in panel makes the server slow or unreliable, to try each case.',
     stack: ['React', 'TypeScript', 'TanStack Query', 'TanStack Router', 'MSW'],
     liveUrl: 'https://bulk-operations-dashboard.vercel.app',
+  },
+  {
+    status: 'live',
+    title: 'Multiselect with tags',
+    description:
+      'An alternative wrapper around react-select. A copy-paste component with its own styles, tests and accessibility checks.',
+    stack: ['React', 'TypeScript', 'Vitest', 'Playwright'],
+    liveUrl: 'https://react-multiselect-with-tags.vercel.app',
   },
   {
     status: 'in-progress',
