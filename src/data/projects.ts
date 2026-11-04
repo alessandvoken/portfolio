@@ -36,7 +36,7 @@ export const projects: Project[] = [
   },
   {
     status: 'live',
-    title: 'Multiselect with tags',
+    title: 'Multiselect wrapper component',
     description:
       'An accessible multi-select built on react-select. Where react-select applies every click, this one keeps the choices as a draft until OK, so a filter fetches results once. Applied values stay on one row as tags, with +N for the rest.',
     stack: ['React', 'TypeScript', 'Vitest', 'Playwright'],
