@@ -30,7 +30,7 @@ export const projects: Project[] = [
     status: 'live',
     title: 'Bulk operations dashboard',
     description:
-      'Sends reminders for a batch of invoices and deals with the ones that fail: temporary failures can be retried on their own, and reminders can be undone. Filters, sorting and pages live in the URL, so a view survives a reload and can be shared. A built-in panel makes the server slow or unreliable, to try each case.',
+      'Sends reminders for a batch of invoices and deals with the ones that fail: temporary failures can be retried on their own, and reminders can be undone. Filters, sorting and pages live in the URL, so a view survives a reload and can be shared. A built-in panel simulates the server conditions.',
     stack: ['React', 'TypeScript', 'TanStack Query', 'TanStack Router', 'MSW'],
     liveUrl: 'https://bulk-operations-dashboard.vercel.app',
   },
@@ -38,15 +38,8 @@ export const projects: Project[] = [
     status: 'live',
     title: 'Multiselect wrapper component',
     description:
-      'An accessible multi-select built on react-select. Where react-select applies every click, this one keeps the choices as a draft until OK, so a filter fetches results once. Applied values stay on one row as tags, with +N for the rest.',
+      'An alternative multi-select built on react-select. Where react-select applies every click, this one keeps the choices as a draft until OK, so a filter fetches results once. Fully accessible, it applies values on one row as tags, with +N for the rest.',
     stack: ['React', 'TypeScript', 'Vitest', 'Playwright'],
     liveUrl: 'https://react-multiselect-with-tags.vercel.app',
-  },
-  {
-    status: 'in-progress',
-    title: 'Incident status',
-    description:
-      'Runs an incident from the inside and tells users about it on a public status page. The team opens an incident, moves it through its phases and posts updates; the public page is served from cache, so it stays up when the product is down, and shows an update as soon as it is published.',
-    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Prisma', 'PostgreSQL'],
   },
 ];
